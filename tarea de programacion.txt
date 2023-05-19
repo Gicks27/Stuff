@@ -1,0 +1,42 @@
+public class Tablero {
+
+    public static void main(String[] args) {
+         int numCasillas = 100;
+        char[] tablero = new char[numCasillas];
+        int posicionFicha = 0;
+        Random dado = new Random();
+        
+        // Inicializamos el tablero
+        for (int i = 0; i < numCasillas; i++) {
+            tablero[i] = 'O';
+        }
+        tablero[0] = 'F';
+        
+        System.out.println("¡Comienza el juego de tablero de 100 casillas!");
+        mostrarTablero(tablero);
+        
+        while (posicionFicha < numCasillas - 1) {
+            int tirada = dado.nextInt(6) + 1;
+            posicionFicha += tirada;
+            
+            if (posicionFicha > numCasillas - 1) {
+                posicionFicha = (numCasillas - 1) - (posicionFicha - (numCasillas - 1));
+            }
+            
+            tablero[posicionFicha- tirada] = 'O';
+            tablero[posicionFicha] = 'F';
+            
+            mostrarTablero(tablero);
+        }
+        
+        System.out.println("¡Felicidades, has ganado el juego!");
+    }
+    
+    public static void mostrarTablero(char[] tablero) {
+        for (int i = 0; i < tablero.length; i++) {
+            System.out.print(tablero[i] + ",");
+        }
+        System.out.println();
+    }
+    
+}

@@ -1,0 +1,116 @@
+ public static void main(String[] args) throws ParseException {
+try (Scanner scanner = new Scanner(System.in)) {
+           boolean salir = false;
+           
+           while (!salir) {
+               System.out.println("----- MENÚ -----");
+               System.out.println("1. Comprobar Nombre");
+               System.out.println("2. Comprbar Edad");
+               System.out.println("3. Comprobar Palabras");
+               System.out.println("4. Salir");
+               System.out.print("Selecciona una opción: ");
+               int opcion = scanner.nextInt();
+               
+               switch (opcion) {
+                   case 1:
+                       Nombre();
+                       break;
+                   case 2:
+                       Edad();
+                       break;
+                   case 3:
+                       Palabras();
+                       break;
+                   case 4:
+                       salir = true;
+                       break;
+                   default:
+                       System.out.println("Opción inválida. Inténtalo nuevamente.");
+                       break;
+               }
+               
+               System.out.println();
+           }
+           
+           System.out.println("¡Hasta luego!");
+       }
+        
+    }
+
+    private static void Nombre() {
+        Scanner sc = new Scanner(System.in);
+        String nombre;
+
+        while (true) {
+            System.out.print("Ingresa tu nombre: ");
+            nombre = sc.nextLine();
+
+            if (nombre.isEmpty()) {
+                System.out.println("Error: La respuesta no puede estar vacía.");
+                continue;
+            }
+
+            char c = nombre.charAt(0);
+
+            if (Character.isUpperCase(c)) {
+                System.out.println("El nombre esta bien escrito.");
+                break;
+            } else {
+                System.out.println("Error: El nombre debe iniciar con mayúsculas.");
+            }
+        }
+    }
+
+    private static void Edad() throws ParseException {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Ingresa tu edad: ");
+        int edad = sc.nextInt();
+        System.out.print("Ingresa tu fecha de nacimiento (en formato dd/mm/yyyy): ");
+        String fechaNacimiento = sc.next();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date fechaNac = sdf.parse(fechaNacimiento);
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(fechaNac);
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH) + 1;
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        cal.setTime(new Date());
+        int age = cal.get(Calendar.YEAR) - year;
+        if ((month > cal.get(Calendar.MONTH) + 1)
+                || (month == cal.get(Calendar.MONTH) + 1 && day > cal.get(Calendar.DAY_OF_MONTH))) {
+            age--;
+        }
+        if (edad == age) {
+            System.out.println("La edad coincide con la fecha de nacimiento.");
+        } else {
+            System.out.println("La edad no coincide con la fecha de nacimiento.");
+        }
+    }
+    private static void Palabras(){
+    String[] dictionary = {"Computadora", "Escritorio", "Murciélago", "Aire", "Teclado", "Escuela", "Dinosaurio", "Avión", "Helado", "Biblioteca"};
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("Computadora"+ "," + "Escritorio"+ ","+ "Murciélago"+ ","+ "Aire"+ ","+ "Teclado"+ ","+ "Escuela"+ ","+ "Dinosaurio"+ ","+ "Avión"+ ","+ "Helado"+ ","+ "Biblioteca");
+            System.out.println("Ingresa una palabra de las siguientes, para verificar su ortografía: ");
+            String palabra = scanner.nextLine();
+            if (palabra.isEmpty()) {
+                break;
+            }
+            boolean correct = false;
+            for (String dictWord : dictionary) {
+                if (dictWord.equals(palabra)) {
+                    correct = true;
+                    break;
+                }
+            }
+            if (correct) {
+                System.out.println("La palabra está bien escrita.");
+            } else {
+                System.out.println("La palabra está mal escrita.");
+            }
+        }
+        
+    
+    }

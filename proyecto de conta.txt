@@ -1,0 +1,210 @@
+ public static void main(String[] args) {
+       try (Scanner scanner = new Scanner(System.in)) {
+           boolean salir = false;
+           
+           while (!salir) {
+               System.out.println("----- MENÚ -----");
+               System.out.println("1. Balance General");
+               System.out.println("2. Estado de Resultados");
+               System.out.println("3. Costos Unitarios");
+               System.out.println("4. Salir");
+               System.out.print("Selecciona una opción: ");
+               int opcion = scanner.nextInt();
+               
+               switch (opcion) {
+                   case 1:
+                       mostrarBalanceGeneral();
+                       break;
+                   case 2:
+                       mostrarEstadoResultados();
+                       break;
+                   case 3:
+                       mostrarCostosUnitarios();
+                       break;
+                   case 4:
+                       salir = true;
+                       break;
+                   default:
+                       System.out.println("Opción inválida. Inténtalo nuevamente.");
+                       break;
+               }
+               
+               System.out.println();
+           }
+           
+           System.out.println("¡Hasta luego!");
+       }
+    }
+
+    private static void mostrarBalanceGeneral() {
+        // Lógica para calcular el balance general y mostrarlo en una tabla
+         Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("Balance General");
+        System.out.println("----------------");
+        
+        // Solicitar los valores de los activos
+        System.out.println("Activos");
+        System.out.print("Ingrese el valor de Efectivo: ");
+        double efectivo = scanner.nextDouble();
+        
+        System.out.print("Ingrese el valor de Cuentas por Cobrar: ");
+        double cuentasPorCobrar = scanner.nextDouble();
+        
+        System.out.print("Ingrese el valor de Inventario: ");
+        double inventario = scanner.nextDouble();
+        
+        System.out.print("Ingrese el valor de Propiedades: ");
+        double propiedades = scanner.nextDouble();
+        
+        // Solicitar los valores de los pasivos
+        System.out.println("\nPasivos");
+        System.out.print("Ingrese el valor de Préstamos: ");
+        double prestamos = scanner.nextDouble();
+        
+        System.out.print("Ingrese el valor de Cuentas por Pagar: ");
+        double cuentasPorPagar = scanner.nextDouble();
+        
+        // Solicitar los valores del patrimonio
+        System.out.println("\nPatrimonio");
+        System.out.print("Ingrese el valor de Capital Social: ");
+        double capitalSocial = scanner.nextDouble();
+        
+        System.out.print("Ingrese el valor de Utilidades Retenidas: ");
+        double utilidadesRetenidas = scanner.nextDouble();
+        
+        
+        // Cálculo de los totales
+        double totalActivos = efectivo + cuentasPorCobrar + inventario + propiedades;
+        double totalPasivos = prestamos + cuentasPorPagar;
+        double totalPatrimonio = capitalSocial + utilidadesRetenidas;
+        
+        // Imprimir el balance general
+        System.out.println("\nEmpresa XYZ");
+        System.out.println("Balance General");
+        System.out.println("--------------------------");
+        System.out.println("|                 | Activo     |             | Pasivo     |             |");
+        System.out.println("|-----------------|------------|-------------|------------|-------------|");
+        System.out.println("|                 | Monto      |             | Monto      |             |");
+        System.out.println("| Efectivo        | $" + efectivo + "    |             | Préstamos  | $" + prestamos + "     |");
+        System.out.println("| Cuentas por Cobrar | $" + cuentasPorCobrar + "  |             | Cuentas por Pagar | $" + cuentasPorPagar + "   |");
+        System.out.println("| Inventario      | $" + inventario + "    |             |              |             |");
+        System.out.println("| Propiedades     | $" + propiedades + "    |             |              |             |");
+        System.out.println("| Total de Activos | $" + totalActivos + "    |             | Total de Pasivos | $" + totalPasivos + " |");
+        System.out.println("|                 |            |             |             |             |");
+        System.out.println("| Patrimonio      |            |             |             |             |");
+        System.out.println("| Capital Social  |            |             |             | $" + capitalSocial + "     |");
+        System.out.println("| Utilidades Retenidas |     |             |             | $" + utilidadesRetenidas + "     |");
+        System.out.println("| Total de Patrimonio |         |             |             | $" + totalPatrimonio + "     |");
+        System.out.println("|                 |            |             |             |             |");
+        System.out.println("| Total General   | $" + totalActivos + "    |             | Total General | $" + (totalPasivos + totalPatrimonio) + "     |");
+        
+      
+        
+        
+    }
+
+    private static void mostrarEstadoResultados() {
+        
+        // Lógica para calcular el estado de resultados y mostrarlo en una tabla
+    Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("Estado de Resultados");
+        System.out.println("--------------------");
+        
+        // Solicitar los ingresos
+        System.out.print("Ingrese el monto de Ingresos Totales: $");
+        double ingresosTotales = scanner.nextDouble();
+        
+        // Solicitar el costo de ventas
+        System.out.print("Ingrese el monto de Costo de Ventas: $");
+        double costoVentas = scanner.nextDouble();
+        
+        // Solicitar los gastos operativos
+        System.out.print("\nGastos Operativos\n");
+        
+        System.out.print("Ingrese el monto de Gastos de Ventas: $");
+        double gastosVentas = scanner.nextDouble();
+        
+        System.out.print("Ingrese el monto de Gastos Administrativos: $");
+        double gastosAdministrativos = scanner.nextDouble();
+        
+        System.out.print("Ingrese el monto de Otros Gastos Operativos: $");
+        double otrosGastosOperativos = scanner.nextDouble();
+        
+        // Solicitar los otros ingresos y gastos
+        System.out.print("\nOtros Ingresos y Gastos\n");
+        
+        System.out.print("Ingrese el monto de Ingresos por Inversiones: $");
+        double ingresosInversiones = scanner.nextDouble();
+        
+        System.out.print("Ingrese el monto de Gastos por Depreciación: $");
+        double gastosDepreciacion = scanner.nextDouble();
+        
+       
+        
+        // Cálculo de la utilidad bruta y gastos operativos totales
+        double utilidadBruta = ingresosTotales - costoVentas;
+        double gastosOperativos = gastosVentas + gastosAdministrativos + otrosGastosOperativos;
+        
+        // Cálculo de la utilidad de operación y otros ingresos y gastos totales
+        double utilidadOperacion = utilidadBruta - gastosOperativos;
+        double otrosIngresosGastos = ingresosInversiones - gastosDepreciacion;
+        
+        // Cálculo de la utilidad antes de impuestos y utilidad neta
+        double utilidadAntesImpuestos = utilidadOperacion + otrosIngresosGastos;
+        double utilidadNeta = utilidadAntesImpuestos;
+        
+        // Imprimir el estado de resultados
+        System.out.println("\nEmpresa XYZ");
+        System.out.println("Estado de Resultados");
+        System.out.println("--------------------------");
+        System.out.println("Ingresos Totales: $" + ingresosTotales);
+        System.out.println("Costo de Ventas: $" + costoVentas);
+        System.out.println("Utilidad Bruta: $" + utilidadBruta);
+        System.out.println("Gastos Operativos: $" + gastosOperativos);
+        System.out.println("Utilidad de Operación: $" + utilidadOperacion);
+        System.out.println("Otros Ingresos y Gastos: $" + otrosIngresosGastos);
+        System.out.println("Utilidad antes de Impuestos: $" + utilidadAntesImpuestos);
+        System.out.println("Utilidad Neta: $" + utilidadNeta);
+        
+       
+    }
+
+    private static void mostrarCostosUnitarios() {
+        // Lógica para calcular los costos unitarios y mostrarlos en una tabla
+       Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("Cálculo de Costos Unitarios");
+        System.out.println("---------------------------");
+        
+        // Solicitar los datos al usuario
+        System.out.print("Ingrese el costo de materiales: $");
+        double costoMateriales = scanner.nextDouble();
+        
+        System.out.print("Ingrese el costo de mano de obra directa: $");
+        double costoManoDeObra = scanner.nextDouble();
+        
+        System.out.print("Ingrese los costos indirectos de producción: $");
+        double costosIndirectos = scanner.nextDouble();
+        
+        System.out.print("Ingrese la cantidad de unidades producidas: ");
+        int cantidadUnidades = scanner.nextInt();
+        
+        
+        
+        // Calcular el costo total
+        double costoTotal = costoMateriales + costoManoDeObra + costosIndirectos;
+        
+        // Calcular el costo unitario
+        double costoUnitario = costoTotal / cantidadUnidades;
+        
+        // Mostrar los resultados en pantalla
+        System.out.println("\nCostos Unitarios");
+        System.out.println("---------------------------");
+        System.out.println("Costo Total: $" + costoTotal);
+        System.out.println("Cantidad de Unidades: " + cantidadUnidades);
+        System.out.println("Costo Unitario: $" + costoUnitario);
+        
+       
+    }

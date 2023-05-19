@@ -1,0 +1,48 @@
+port java.time.LocalDate;
+
+public class Fecha {
+    private LocalDate ID;
+    private Stuff s;
+    private int dia, mes, anio;
+
+    public Fecha() {
+        dia= mes = anio= 0;
+        ID= LocalDate.now();
+        s = new Stuff();
+    }
+    public int devolverDia(){
+    
+        return (ID.getDayOfMonth());
+    
+    }
+    
+    public int devolverMes(){
+    return(ID.getMonthValue());
+    }
+    
+    public int devolverAnio(){
+    return(ID.getYear());
+    }
+    
+    public String devolverID(){
+    anio= this.devolverAnio();
+    mes= this.devolverMes();
+    dia= this.devolverDia();
+     String aux="";
+     aux= "" + (aux+anio).charAt(2);
+     aux= aux + (this.devolverMes()< 10 ? "0"+ this.devolverMes() : this.devolverMes());
+     aux= aux + (this.devolverDia()< 10 ? "0" +this.devolverDia(): this.devolverDia());
+     aux= aux + (""+anio).charAt(3);
+     aux = aux + s.numAleatorio0y9();
+     return aux;
+    }
+    
+    public void xx(){
+    System.out.println(""+s.numAleatorio0y9());
+    }
+    public static void main(String[] args) {
+         Fecha fe=new Fecha();
+         System.out.println("ID :"+fe.devolverID());
+    
+    }
+}
